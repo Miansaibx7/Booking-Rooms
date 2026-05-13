@@ -1,0 +1,47 @@
+.occupied-dates-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fffaf5; /* Light beige to match the gradient tones */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.month-section {
+  margin-bottom: 20px;
+}
+
+.month-title {
+  font-size: 1.5rem;
+  color: #444;
+  border-bottom: 2px solid #f0d9c8; /* Soft pastel line */
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.date-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.date-card {
+  background: linear-gradient(135deg, #f8b996, #fddbb5); /* Updated gradient */
+  color: #4a251e; /* Deep brown for text contrast */
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.date-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.date-range {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
