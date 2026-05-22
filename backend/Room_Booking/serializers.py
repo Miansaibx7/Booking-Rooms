@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from .models import Room,RoomImage,OccupiedDate,User
-
+# Serializer for RoomImage model, including a HyperlinkedRelatedField for the associated room
 class RoomImagesSerializer(serializers.ModelSerializer):
     room = serializers.HyperlinkedRelatedField(
         view_name = 'room-detail',
@@ -11,7 +11,7 @@ class RoomImagesSerializer(serializers.ModelSerializer):
         model = RoomImage
         fields = ['id','image','caption','room']
   
-  
+# Serializer for OccupiedDate model, including HyperlinkedRelatedFields for room and user  
 class OccupiedDateSerializer(serializers.HyperlinkedModelSerializer):
     room = serializers.HyperlinkedRelatedField(
         view_name = 'room-detail',
