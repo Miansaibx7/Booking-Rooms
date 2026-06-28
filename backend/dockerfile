@@ -1,0 +1,56 @@
+FROM node:20-slim AS frontend-builder
+
+WORKDIR /app/frontend
+
+# Copy frontend dependency files
+COPY frontend/package.json frontend/package-lock.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy frontend source and build
+COPY frontend/ ./
+RUN npm run build
+
+# The build output will be in /app/frontend/build
+
+# Dockerfile
+FROM python:3.13-slim-bookworm
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install uv
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
+
+WORKDIR /booking_app
+
+# Copy dependency files first (for caching)
+COPY pyproject.toml uv.lock ./
+
+# Install dependencies
+RUN uv sync --frozen --no-cache
+
+COPY ..
+
+COPY --from=Frontend/app/frontend/
+
+# Create a non-root user (security best practice)
+RUN adduser --disabled-password --gecos '' appuser && chown -R appuser /app
+USER appuser
+
+# Environment variables (override in production)
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    DJANGO_SETTINGS_MODULE=backend.settings
+
+EXPOSE 8000
+
+# Start Django development server (use gunicorn for production)
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
+
+
+

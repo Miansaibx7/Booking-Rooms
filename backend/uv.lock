@@ -17,6 +17,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "asgiref" },
+    { name = "decouple" },
     { name = "django" },
     { name = "django-cors-headers" },
     { name = "djangorestframework" },
@@ -29,6 +30,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "asgiref", specifier = "==3.11.1" },
+    { name = "decouple", specifier = ">=0.0.7" },
     { name = "django", specifier = "==6.0.2" },
     { name = "django-cors-headers", specifier = "==4.9.0" },
     { name = "djangorestframework", specifier = "==3.16.1" },
@@ -37,6 +39,12 @@ requires-dist = [
     { name = "sqlparse", specifier = "==0.5.5" },
     { name = "tzdata", specifier = "==2025.3" },
 ]
+
+[[package]]
+name = "decouple"
+version = "0.0.7"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/6c/e3/f70681dd89a96a701f22055caedc79cf88cebdeac9df827a5720bca80278/decouple-0.0.7.tar.gz", hash = "sha256:c253c1cc62b76e9720a066f334552548c6de1884bc3bdf456ddb62d61b867b09", size = 3324, upload-time = "2019-12-25T15:01:39.824Z" }
 
 [[package]]
 name = "django"

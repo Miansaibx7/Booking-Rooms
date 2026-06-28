@@ -1,0 +1,124 @@
+.booking-container {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.calendar-header h2 {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+.calendar-header button {
+  background: #f8b996;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.calendar-day {
+  background: #2b3637;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.calendar-day.selected {
+  background: #f8b996;
+}
+
+.calendar-day.overflow {
+  color: #777;
+  background: #1a2223;
+  cursor: pointer;
+}
+
+.calendar-day.overflow.selected {
+  background: #f8b996aa;
+}
+
+.book-rooms-button {
+  margin-top: 15px;
+  background: #101a1b;
+  color: #f8b996;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1em;
+  border-radius: 5px;
+  transition: 0.1s ease-in-out;
+}
+.book-rooms-button:hover {
+  background-color: #f8b996;
+  color: #101a1b;
+}
+
+.error-message {
+  color: #ff4d4d;
+  background-color: #ffebeb;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+  text-align: center;
+}
+.book-room-button {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 1rem auto;
+}
+
+.book-room-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.book-room-button:active {
+  background-color: #003f8a;
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.book-room-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.book-room-button:focus {
+  outline: 2px solid #0056b3;
+  outline-offset: 2px;
+}
+.date-switcher {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+.date-switcher:hover {
+  background-color: #f8b896b6;
+}
