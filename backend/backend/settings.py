@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'Room_Booking',
+    
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
