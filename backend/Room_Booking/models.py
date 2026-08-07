@@ -10,10 +10,7 @@ class Room(models.Model):
         ('standard','Standard Room'),
         ('delux', 'Delux Room')
     ]
-    CURRENCY_TYPE =[
-        ('USD','USD'),
-        ('EUR', 'EUR')
-    ]
+    CURRENCY_TYPE =[('USD','USD'), ('EUR', 'EUR')]
     
     name = models.CharField(max_length=100,blank=True,default='')
     type = models.CharField(max_length=100, choices=ROOM_TYPES)
