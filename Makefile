@@ -14,8 +14,6 @@ FRONTEND_DIR := frontend
 
 # --------------------------------------------------
 # Default command
-# --------------------------------------------------
-
 help:
 	@echo ""
 	@echo "Room Booking Project"
