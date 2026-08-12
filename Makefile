@@ -74,10 +74,7 @@ dev:
 	@echo "Terminal 2:"
 	@echo "  make frontend"
 
-# --------------------------------------------------
 # Django
-# --------------------------------------------------
-
 makemigrations:
 	cd $(BACKEND_DIR) && uv run python manage.py makemigrations
 
