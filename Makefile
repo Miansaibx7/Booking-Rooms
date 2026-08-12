@@ -46,10 +46,7 @@ help:
 	@echo "  make clean               Remove cache files"
 	@echo ""
 
-# --------------------------------------------------
 # Installation
-# --------------------------------------------------
-
 install: backend-install frontend-install
 
 backend-install:
