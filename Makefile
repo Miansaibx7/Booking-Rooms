@@ -87,10 +87,7 @@ createsuperuser:
 shell:
 	cd $(BACKEND_DIR) && uv run python manage.py shell
 
-# --------------------------------------------------
 # Testing
-# --------------------------------------------------
-
 test: test-backend test-frontend
 
 test-backend:
