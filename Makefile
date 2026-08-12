@@ -107,10 +107,7 @@ lint-frontend:
 format:
 	cd $(BACKEND_DIR) && uv run ruff format .
 
-# --------------------------------------------------
 # Complete checks
-# --------------------------------------------------
-
 check: lint-backend lint-frontend test-backend
 
 # --------------------------------------------------
