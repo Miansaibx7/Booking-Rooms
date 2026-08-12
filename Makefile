@@ -96,20 +96,15 @@ test-backend:
 test-frontend:
 	cd $(FRONTEND_DIR) && npm test
 
-# --------------------------------------------------
 # Linting
-# --------------------------------------------------
-
 lint-backend:
 	cd $(BACKEND_DIR) && uv run ruff check .
 
 lint-frontend:
 	cd $(FRONTEND_DIR) && npm run lint
 
-# --------------------------------------------------
-# Formatting
-# --------------------------------------------------
 
+# Formatting
 format:
 	cd $(BACKEND_DIR) && uv run ruff format .
 
