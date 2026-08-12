@@ -5,7 +5,6 @@
         lint-backend lint-frontend format \
         check clean
 
-# --------------------------------------------------
 # Project directories
 BACKEND_DIR := backend
 FRONTEND_DIR := frontend
