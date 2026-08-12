@@ -110,10 +110,7 @@ format:
 # Complete checks
 check: lint-backend lint-frontend test-backend
 
-# --------------------------------------------------
 # Clean
-# --------------------------------------------------
-
 clean:
 	cd $(BACKEND_DIR) && \
 	find . -type d -name "__pycache__" -prune -exec rm -rf {} \;
