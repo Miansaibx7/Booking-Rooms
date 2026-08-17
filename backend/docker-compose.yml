@@ -1,2 +1,74 @@
-# This file is under development and not ready for production use.
-# It is intended to be used as a reference for setting up a development environment using Docker Compose.
+version: '3.8'
+
+services:
+  # ---------------------------------------------------------------------------
+  # Django + React Full-Stack Application Service
+  # ---------------------------------------------------------------------------
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: booking_rooms_app
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=1
+      - DJANGO_SETTINGS_MODULE=backend.settings
+      - DB_ENGINE=django.db.backends.postgresql
+      - DB_NAME=booking_db
+      - DB_USER=booking_user
+      - DB_PASSWORD=booking_password
+      - DB_HOST=db
+      - DB_PORT=5432
+    volumes:
+      - .:/booking_app
+      - media_data:/booking_app/media
+      - static_data:/booking_app/static
+    depends_on:
+      db:
+        condition: service_healthy
+    command: >
+      sh -c "uv run python manage.py migrate &&
+             uv run python manage.py runserver 0.0.0.0:8000"
+
+  # ---------------------------------------------------------------------------
+  # PostgreSQL Database Service
+  # ---------------------------------------------------------------------------
+  db:
+    image: postgres:16-alpine
+    container_name: booking_rooms_db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=booking_db
+      - POSTGRES_USER=booking_user
+      - POSTGRES_PASSWORD=booking_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U booking_user -d booking_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ---------------------------------------------------------------------------
+  # Database Management GUI (phpMyAdmin alternative for Postgres)
+  # ---------------------------------------------------------------------------
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: booking_rooms_pgadmin
+    restart: unless-stopped
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
+  media_data:
+  static_data:
